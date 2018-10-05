@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<!-- This config is not use when running in eclipse as java app, cause the logback-test.xml is prefered 
+		by logback then. Anyway this should work when running after maven build where test resources should be 
+		not contained. -->
+	<include resource="org/springframework/boot/logging/logback/base.xml" />
+    <include optional="true" resource="logback-ape.xml" /> 
+
+	<!-- PROFILLESS LOG SETTINGS -->
+	<logger name="org.springframework" level="WARN" />
+	<root level="WARN" />
+
+
+</configuration>

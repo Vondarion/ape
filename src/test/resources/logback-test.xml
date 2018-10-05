@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+<!-- 	<include resource="org/springframework/boot/logging/logback/base.xml" /> -->
+
+	<property name="DEV_HOME" value="/home/developer/Schreibtisch/ape/logs/test/" />
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>
+				%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+
+	<appender name="SERVICE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${DEV_HOME}/service.log</file>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>
+				%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</Pattern>
+		</encoder>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- rollover daily -->
+			<fileNamePattern>${DEV_HOME}/archived/service.%d{yyyy-MM-dd}.%i.log
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+	</appender>
+
+	<appender name="API" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${DEV_HOME}/api.log</file>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>
+				%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</Pattern>
+		</encoder>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- rollover daily -->
+			<fileNamePattern>${DEV_HOME}/archived/api.%d{yyyy-MM-dd}.%i.log
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+	</appender>
+
+	<appender name="OUTPUT" class="ch.qos.logback.core.FileAppender">
+		<file>${DEV_HOME}/output.log</file>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>
+				%msg%n
+			</Pattern>
+		</encoder>
+		<param name="Append" value="false" />
+	</appender>
+	
+	<appender name="INSPECTOR" class="ch.qos.logback.core.FileAppender">
+		<file>${DEV_HOME}/inspector.log</file>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>
+				%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</Pattern>
+		</encoder>
+		<param name="Append" value="false" />
+	</appender>
+
+	<appender name="CALCULATOR" class="ch.qos.logback.core.FileAppender">
+		<file>${DEV_HOME}/calculator.log</file>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>
+				%msg%n
+			</Pattern>
+		</encoder>
+		<param name="Append" value="false" />
+	</appender>
+
+	<appender name="DEFAULT" class="ch.qos.logback.core.FileAppender">
+		<file>${DEV_HOME}/default.log</file>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>
+				%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</Pattern>
+		</encoder>
+		<param name="Append" value="false" />
+	</appender>
+
+	<appender name="ERROR" class="ch.qos.logback.core.FileAppender">
+		<file>${DEV_HOME}/error.log</file>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>
+				%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</Pattern>
+		</encoder>
+		<param name="Append" value="false" />
+	</appender>
+
+	<appender name="SPRING" class="ch.qos.logback.core.FileAppender">
+		<file>${DEV_HOME}/spring.log</file>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>
+				%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</Pattern>
+		</encoder>
+		<param name="Append" value="false" />
+	</appender>
+
+
+	<logger name="API" level="ALL" additivity="false">
+		<appender-ref ref="API" />
+	</logger>
+
+	<logger name="SERVICE" level="ALL" additivity="false">
+		<appender-ref ref="SERVICE" />
+	</logger>
+
+	<logger name="OUTPUT" level="ALL" additivity="false">
+		<appender-ref ref="OUTPUT" />
+		<appender-ref ref="STDOUT" />
+	</logger>
+
+	<logger name="com.home.ape" level="error">
+		<appender-ref ref="ERROR" />
+	</logger>
+	<logger name="com.home.ape" level="info" additivity="false">
+		<appender-ref ref="DEFAULT" />
+	</logger>
+
+	
+	<logger name="org.springframework" level="WARN">
+		<appender-ref ref="SPRING" />
+	</logger>
+
+	<root level="WARN">
+		<appender-ref ref="STDOUT" />
+	</root>
+</configuration>
