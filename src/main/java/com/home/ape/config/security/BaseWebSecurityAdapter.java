@@ -24,7 +24,7 @@ public abstract class BaseWebSecurityAdapter extends WebSecurityConfigurerAdapte
 
 	protected static final boolean	DEBUG_SECURITY				= true;
 
-	protected static final String[]	PATTERNS_REQUIRES_PLAYER	= { "/predictors", "/fixtures", "/teams" };
+	protected static final String[]	PATTERNS_REQUIRES_PLAYER	= { "/homes" };
 	protected static final String[]	PATTERNS_REQUIRES_ADMIN		= { "/admin", "/system" };
 	// TODO no reason for admin so far
 

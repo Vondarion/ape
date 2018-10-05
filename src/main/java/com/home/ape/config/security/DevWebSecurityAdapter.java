@@ -41,22 +41,22 @@ public class DevWebSecurityAdapter extends BaseWebSecurityAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		log.info("Configure development web security authentication");
-		auth.inMemoryAuthentication().withUser("player1").password(passwordEncoder().encode("secret1"))
+		auth.inMemoryAuthentication().withUser("user1").password(passwordEncoder().encode("secret1"))
 				.roles(Roles.USER_ROLE);
-		auth.inMemoryAuthentication().withUser("player2").password(passwordEncoder().encode("secret2"))
+		auth.inMemoryAuthentication().withUser("user2").password(passwordEncoder().encode("secret2"))
 				.roles(Roles.USER_ROLE);
-		auth.inMemoryAuthentication().withUser("player3").password(passwordEncoder().encode("secret3"))
+		auth.inMemoryAuthentication().withUser("admin").password(passwordEncoder().encode("admin"))
 				.roles(Roles.USER_ROLE, Roles.ADMIN_ROLE);
 	}
 
 	@Override
 	protected UserDetailsService userDetailsService() {
 		log.info("Building development userDetailService");
-		UserDetails player1 = User.withUsername("player1").password(passwordEncoder().encode("secret1"))
+		UserDetails player1 = User.withUsername("user1").password(passwordEncoder().encode("secret1"))
 				.roles(Roles.USER_ROLE).build();
-		UserDetails player2 = User.withUsername("player2").password(passwordEncoder().encode("secret2"))
+		UserDetails player2 = User.withUsername("user2").password(passwordEncoder().encode("secret2"))
 				.roles(Roles.USER_ROLE).build();
-		UserDetails player3 = User.withUsername("player3").password(passwordEncoder().encode("secret3"))
+		UserDetails player3 = User.withUsername("admin").password(passwordEncoder().encode("admin"))
 				.roles(Roles.USER_ROLE, Roles.ADMIN_ROLE).build();
 
 		UserDetailsService userDetailsService = new InMemoryUserDetailsManager(player1, player2, player3);
