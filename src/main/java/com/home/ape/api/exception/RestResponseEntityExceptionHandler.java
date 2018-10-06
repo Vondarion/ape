@@ -1,4 +1,4 @@
-package com.home.ape.api;
+package com.home.ape.api.exception;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
