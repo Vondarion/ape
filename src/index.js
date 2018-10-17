@@ -44,9 +44,9 @@ class Chat extends React.Component {
       return;
     }
     const newMessage = {
-      text: this.state.text,
-      sender: "Ape",
-      id: Date.now()
+      type: 'CHAT',
+      content: this.state.text,
+      sender: "Ape"
     };
 
     this.setState(state => ({
