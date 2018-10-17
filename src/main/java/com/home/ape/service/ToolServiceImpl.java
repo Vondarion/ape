@@ -12,36 +12,36 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
-import com.home.ape.dao.ItemDAO;
-import com.home.ape.model.Item;
+import com.home.ape.dao.ToolDAO;
+import com.home.ape.model.Tool;
 import com.home.ape.security.annotation.RequiresAdminRole;
 import com.home.ape.service.exception.ServiceException;
 
 /**
- * Default implementation of the {@link ItemService} interface.
+ * Default implementation of the {@link ToolService} interface.
  */
 @Service
 @Primary
-public class ItemServiceImpl extends BaseService implements ItemService {
+public class ToolServiceImpl extends BaseService implements ToolService {
 	/**
 	 * The {@link Logger} to be used. Declared here so that it shows up in logging console early on.
 	 */
 	@SuppressWarnings("unused")
-	private static final Logger	logger	= LoggerFactory.getLogger(ItemServiceImpl.class);
+	private static final Logger	logger	= LoggerFactory.getLogger(ToolServiceImpl.class);
 
 	/**
-	 * The {@link ItemDAO} used for persistence operations.
+	 * The {@link ToolDAO} used for persistence operations.
 	 */
 	@Autowired
-	ItemDAO						itemDAO;
+	ToolDAO						toolDAO;
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	@RequiresAdminRole
-	public Item create(@Valid Item item) throws ServiceException {
-		return this.save(item);
+	public Tool create(@Valid Tool tool) throws ServiceException {
+		return this.save(tool);
 	}
 
 	/**
@@ -49,9 +49,9 @@ public class ItemServiceImpl extends BaseService implements ItemService {
 	 */
 	@Override
 	@RequiresAdminRole
-	public void delete(Item item) throws ServiceException {
+	public void delete(Tool tool) throws ServiceException {
 		try {
-			itemDAO.delete(item);
+			toolDAO.delete(tool);
 		} catch ( Exception ex ) {
 			this.handleException(ex);
 		}
@@ -62,11 +62,11 @@ public class ItemServiceImpl extends BaseService implements ItemService {
 	 */
 	@Override
 	@Cacheable("all")
-	public List<Item> getAll() throws ServiceException {
-		List<Item> retVal = null;
+	public List<Tool> getAll() throws ServiceException {
+		List<Tool> retVal = null;
 
 		try {
-			retVal = itemDAO.findAll();
+			retVal = toolDAO.findAll();
 		} catch ( Exception ex ) {
 			this.handleException(ex);
 		}
@@ -78,28 +78,11 @@ public class ItemServiceImpl extends BaseService implements ItemService {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Optional<Item> getById(Long id) throws ServiceException {
-		Optional<Item> retVal = null;
+	public Optional<Tool> getById(Long id) throws ServiceException {
+		Optional<Tool> retVal = null;
 
 		try {
-			retVal = itemDAO.findById(id);
-		} catch ( Exception ex ) {
-			this.handleException(ex);
-		}
-
-		return retVal;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	@RequiresAdminRole
-	public Item save(@Valid Item item) throws ServiceException {
-		Item retVal = null;
-
-		try {
-			retVal = itemDAO.save(item);
+			retVal = toolDAO.findById(id);
 		} catch ( Exception ex ) {
 			this.handleException(ex);
 		}
@@ -112,7 +95,24 @@ public class ItemServiceImpl extends BaseService implements ItemService {
 	 */
 	@Override
 	@RequiresAdminRole
-	public Item update(@Valid Item item) throws ServiceException {
-		return this.save(item);
+	public Tool save(@Valid Tool tool) throws ServiceException {
+		Tool retVal = null;
+
+		try {
+			retVal = toolDAO.save(tool);
+		} catch ( Exception ex ) {
+			this.handleException(ex);
+		}
+
+		return retVal;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	@RequiresAdminRole
+	public Tool update(@Valid Tool tool) throws ServiceException {
+		return this.save(tool);
 	}
 }

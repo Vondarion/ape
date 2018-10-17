@@ -63,7 +63,7 @@ public abstract class BaseWebSecurityAdapter extends WebSecurityConfigurerAdapte
 	@Bean
 	CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration configuration = new CorsConfiguration();
-		configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));//
+		configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200", "http://localhost:3000"));//
 		configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
 		configuration.setAllowedHeaders(Arrays.asList("X-XSRF-TOKEN", "X-XSRF-HEADER", "*"));
 		configuration.setExposedHeaders(Arrays.asList("X-XSRF-TOKEN", "X-XSRF-HEADER"));

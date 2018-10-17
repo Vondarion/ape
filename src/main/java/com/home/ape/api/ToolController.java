@@ -16,59 +16,59 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.home.ape.model.Item;
-import com.home.ape.service.ItemService;
+import com.home.ape.model.Tool;
+import com.home.ape.service.ToolService;
 
 @RestController
-@RequestMapping("/items")
-public class ItemController {
+@RequestMapping("/tools")
+public class ToolController {
 
-	private static final Logger	log	= LoggerFactory.getLogger(ItemController.class);
+	private static final Logger	log	= LoggerFactory.getLogger(ToolController.class);
 
 	@Autowired
-	ItemService					itemService;
+	ToolService					toolService;
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{id}")
 	public ResponseEntity<?> getItem(@PathVariable Long id) {
-		log.info("Get item: {}", id);
-		return new ResponseEntity<>(itemService.getById(id), HttpStatus.OK);
+		log.info("Get tool: {}", id);
+		return new ResponseEntity<>(toolService.getById(id), HttpStatus.OK);
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<?> getItemes() {
-		log.info("Get items");
-		return new ResponseEntity<>(itemService.getAll(), HttpStatus.OK);
+		log.info("Get tools");
+		return new ResponseEntity<>(toolService.getAll(), HttpStatus.OK);
 	}
 
 	/**
-	 * Updates the {@link Item} object with the specified ID with the properties of the specified {@link Item}.
+	 * Updates the {@link Tool} object with the specified ID with the properties of the specified {@link Tool}.
 	 * 
 	 * @param id
-	 *            The ID of the {@link Item} to return
+	 *            The ID of the {@link Tool} to return
 	 * @param form
-	 *            The {@link Item} object with the new property values to be used
-	 * @return {@link ResponseEntity} representation of the updated {@link Item}
+	 *            The {@link Tool} object with the new property values to be used
+	 * @return {@link ResponseEntity} representation of the updated {@link Tool}
 	 * 
 	 * @name Update Item
 	 */
 	@RequestMapping(method = RequestMethod.PUT, value = "/{id}")
-	public ResponseEntity<?> update(@PathParam("id") Long id, @Valid Item item) {
-		item = itemService.update(item);
-		return new ResponseEntity<>(item, HttpStatus.OK);
+	public ResponseEntity<?> update(@PathParam("id") Long id, @Valid Tool tool) {
+		tool = toolService.update(tool);
+		return new ResponseEntity<>(tool, HttpStatus.OK);
 	}
 
 	/**
-	 * Creates a new {@link Item} object.
+	 * Creates a new {@link Tool} object.
 	 * 
 	 * @param attribute
-	 *            The {@link Item} to be created
-	 * @return {@link ResponseEntiy} representation of the created {@link Item}
+	 *            The {@link Tool} to be created
+	 * @return {@link ResponseEntiy} representation of the created {@link Tool}
 	 * 
 	 * @name Create Item
 	 */
 	@PostMapping() // method = RequestMethod.POST, headers = "Accept=application/json", produces = "application/json")
-	public ResponseEntity<?> create(@Valid @RequestBody Item item, BindingResult bindingResult) {
-		item = itemService.create(item);
-		return new ResponseEntity<>(item, HttpStatus.OK);
+	public ResponseEntity<?> create(@Valid @RequestBody Tool tool, BindingResult bindingResult) {
+		tool = toolService.create(tool);
+		return new ResponseEntity<>(tool, HttpStatus.OK);
 	}
 }

@@ -3,12 +3,12 @@ package com.home.ape.dao;
 import java.util.List;
 import java.util.Optional;
 
-import com.home.ape.model.Item;
+import com.home.ape.model.Tool;
 
 /**
- * The Interface ItemDAO.
+ * The Interface ToolDAO.
  */
-public interface ItemDAO {
+public interface ToolDAO {
 
 	/**
 	 * Count.
@@ -23,7 +23,7 @@ public interface ItemDAO {
 	 * @param entity
 	 *            the entity
 	 */
-	public void delete(Item entity);
+	public void delete(Tool entity);
 
 	/**
 	 * Delete.
@@ -31,7 +31,7 @@ public interface ItemDAO {
 	 * @param entities
 	 *            the entities
 	 */
-	public void deleteAll(Iterable<? extends Item> entities);
+	public void deleteAll(Iterable<? extends Tool> entities);
 
 	/**
 	 * Delete.
@@ -60,7 +60,7 @@ public interface ItemDAO {
 	 *
 	 * @return the list
 	 */
-	public List<Item> findAll();
+	public List<Tool> findAll();
 
 	/**
 	 * Find by id.
@@ -69,16 +69,16 @@ public interface ItemDAO {
 	 *            the id
 	 * @return the optional result (Team)
 	 */
-	Optional<Item> findById(Long id);
+	Optional<Tool> findById(Long id);
 
 	/**
 	 * Save.
 	 *
 	 * @param entity
 	 *            the entity
-	 * @return the team
+	 * @return the tool
 	 */
-	public Item save(Item entity);
+	public Tool save(Tool entity);
 
 	/**
 	 * Save.
@@ -87,6 +87,6 @@ public interface ItemDAO {
 	 *            the entities
 	 * @return the list
 	 */
-	public List<Item> save(List<? extends Item> entities);
+	public List<Tool> save(List<? extends Tool> entities);
 
 }

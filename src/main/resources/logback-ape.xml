@@ -14,7 +14,7 @@
 <!-- 		<logger name="com.sap.consulting.tipservice.config.StartupApplicationListener" level="WARN" /> -->
 <!-- 		<logger name="com.sap.consulting.tipservice" level="DEBUG" /> -->
 <!-- 		<logger name="API_TRACE" level="ALL" /> -->
-<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
 			<pattern>
 				%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
@@ -138,8 +138,13 @@
 	<logger name="com.home.ape" level="error">
 		<appender-ref ref="ERROR" />
 	</logger>
+	
 	<logger name="com.home.ape" level="info" additivity="false">
 		<appender-ref ref="DEFAULT" />
+	</logger>
+	
+		<logger name="com.home.ape.api" level="debug" additivity="false">
+		<appender-ref ref="API" />
 	</logger>
 
 	

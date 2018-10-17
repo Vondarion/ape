@@ -18,14 +18,14 @@ import lombok.ToString;
  * The Class Home.
  */
 @Entity
-@Table(name = "APE_ITEM")
+@Table(name = "APE_TOOL")
 @Getter
 @Setter
 @ToString(exclude = { "shortName", "iconUrl", "imageUrl", "description" })
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Item extends BaseObject {
+public class Tool extends BaseObject {
 
 	/** The Constant serialVersionUID. */
 	private static final long	serialVersionUID	= -2747042132123372028L;

@@ -9,20 +9,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.home.ape.model.Item;
+import com.home.ape.model.Tool;
 
+// TODO: Auto-generated Javadoc
 /**
- * Default implementation of the {@link ItemDAO} interface based on Spring Data JPA.
+ * Default implementation of the {@link ToolDAO} interface based on Spring Data JPA.
  * 
  * @see http://static.springsource.org/spring-data/data-jpa/docs/current/reference/html/
  */
 @Service
-public class ItemDAOImpl implements ItemDAO {
+public class ToolDAOImpl implements ToolDAO {
 	/**
 	 * The spring-data-jpa repository to be used for persistence operations.
 	 */
 	@Autowired
-	ItemRepository repository = null;
+	ToolRepository repository = null;
 
 	/*
 	 * (non-Javadoc)
@@ -35,25 +36,25 @@ public class ItemDAOImpl implements ItemDAO {
 
 	/*
 	 * (non-Javadoc)
-	 * @see com.sap.consulting.tipservice.dao.TeamDAO#delete(com.sap.consulting.tipservice.model.Team)
+	 * @see com.home.ape.dao.ToolDAO#delete(com.home.ape.model.Tool)
 	 */
 	@Override
-	public void delete(Item entity) {
+	public void delete(Tool entity) {
 		repository.delete(entity);
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * @see com.sap.consulting.tipservice.dao.TeamDAO#deleteAll(java.lang.Iterable)
+	 * @see com.home.ape.dao.ToolDAO#deleteAll(java.lang.Iterable)
 	 */
 	@Override
-	public void deleteAll(Iterable<? extends Item> entities) {
+	public void deleteAll(Iterable<? extends Tool> entities) {
 		repository.deleteAll(entities);
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * @see com.sap.consulting.tipservice.dao.TeamDAO#deleteById(java.lang.Long)
+	 * @see com.home.ape.dao.ToolDAO#deleteById(java.lang.Long)
 	 */
 	@Override
 	public void deleteById(Long id) {
@@ -62,7 +63,7 @@ public class ItemDAOImpl implements ItemDAO {
 
 	/*
 	 * (non-Javadoc)
-	 * @see com.sap.consulting.tipservice.dao.TeamDAO#deleteAll()
+	 * @see com.home.ape.dao.ToolDAO#deleteAll()
 	 */
 	@Override
 	public void deleteAll() {
@@ -71,7 +72,7 @@ public class ItemDAOImpl implements ItemDAO {
 
 	/*
 	 * (non-Javadoc)
-	 * @see com.sap.consulting.tipservice.dao.TeamDAO#existsById(java.lang.Long)
+	 * @see com.home.ape.dao.ToolDAO#existsById(java.lang.Long)
 	 */
 	@Override
 	public boolean existsById(Long id) {
@@ -80,38 +81,38 @@ public class ItemDAOImpl implements ItemDAO {
 
 	/*
 	 * (non-Javadoc)
-	 * @see com.sap.consulting.tipservice.dao.TeamDAO#findAll()
+	 * @see com.home.ape.dao.ToolDAO#findAll()
 	 */
 	@Override
-	public List<Item> findAll() {
+	public List<Tool> findAll() {
 		return repository.findAll(new Sort(Sort.Direction.ASC, "name"));
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * @see com.sap.consulting.tipservice.dao.TeamDAO#findById(java.lang.Long)
+	 * @see com.home.ape.dao.ToolDAO#findById(java.lang.Long)
 	 */
 	@Override
-	public Optional<Item> findById(Long id) {
+	public Optional<Tool> findById(Long id) {
 		return repository.findById(id);
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * @see com.sap.consulting.tipservice.dao.TeamDAO#save(com.sap.consulting.tipservice.model.Team)
+	 * @see com.home.ape.dao.ToolDAO#save(com.home.ape.model.Tool)
 	 */
 	@Override
-	public Item save(@Valid Item entity) {
+	public Tool save(@Valid Tool entity) {
 		return repository.save(entity);
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * @see com.sap.consulting.tipservice.dao.TeamDAO#save(java.util.List)
+	 * @see com.home.ape.dao.ToolDAO#save(java.util.List)
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Item> save(@Valid List<? extends Item> entities) {
-		return (List<Item>) repository.saveAll(entities);
+	public List<Tool> save(@Valid List<? extends Tool> entities) {
+		return (List<Tool>) repository.saveAll(entities);
 	}
 }
