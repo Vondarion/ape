@@ -19,7 +19,7 @@ class Ape extends React.Component {
 class Chat extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { clientConnected: false, messages: [{text:"Hello", sender:"A"},{text:"Hi!", sender:"B"}], text: 'Enter it' };
+    this.state = { clientConnected: false, messages: [{content:"Hello", sender:"A"},{content:"Hi!", sender:"B"}], text: 'Enter it' };
     this.handleChangeChatMessageText = this.handleChangeChatMessageText.bind(this);
     this.handleSubmitChatMessage = this.handleSubmitChatMessage.bind(this);
   }
@@ -61,7 +61,7 @@ class Chat extends React.Component {
 
   sendMessage(message) {
     console.log("sendingMessage to socket" + {message});
-    this.clientRef.sendMessage('/app/chat', message);
+    this.clientRef.sendMessage('/app/chat', JSON.stringify(message));
     console.log("sendMessage to socket" + {message});
   }
 
@@ -71,6 +71,9 @@ class Chat extends React.Component {
   }
 
   onMessageReceive = (msg, topic) => {
+    this.setState(prevState => ({
+      messages: [...prevState.messages, msg]
+    }))
     // this.setState(prevState => ({
     //   messages: [...prevState.messages, msg]
     // }));
@@ -157,7 +160,7 @@ class ChatMessage extends React.Component {
   render() {
     return (
       <div className="message">
-        Sender <span className="sender">{this.props.message.sender}</span> Text <span className="text">{this.props.message.text}</span>
+        Sender <span className="sender">{this.props.message.sender}</span>: <span className="text">{this.props.message.content}</span>
       </div>
     );
   }
