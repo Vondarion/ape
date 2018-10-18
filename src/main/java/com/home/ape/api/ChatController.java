@@ -16,9 +16,9 @@ public class ChatController {
 	@MessageMapping("/chat")
 	@SendTo("/topic/all")
 	public ChatMessage chat(ChatMessage message) throws Exception {
-		log.debug("Incoming message: {}", message);
+		log.debug("Incoming message: {}", message.toString());
 		System.out.println("Incoming message: " + message);
 		Thread.sleep(2000);
-		return ChatMessage.builder().sender("APE").content("UGUG").build();
+		return ChatMessage.builder().sender("APE").content("UGUG" + message.getContent()).build();
 	}
 }
