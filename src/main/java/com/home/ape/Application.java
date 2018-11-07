@@ -37,7 +37,7 @@ public class Application extends SpringBootServletInitializer {
 	public static void main(String[] args) {
 		// We start the Spring Application as simple as we use the public static void main method in java
 		// System.out.println("args:" + ArrayUtils.toString(args));
-		log.info("Starting TipService application");
+		log.info("Awakening the Ape");
 		SpringApplication app = new SpringApplication(Application.class);
 		app.addInitializers(new EnvironmentContextInitializer());
 		app.run(args);
