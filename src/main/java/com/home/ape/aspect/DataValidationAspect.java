@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
+import javax.validation.Validator;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -17,7 +18,6 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.i18n.LocaleContextHolder;
-import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import com.home.ape.config.CommonJointPointConfiguration;
 import com.home.ape.message.ValidationError;
@@ -38,7 +38,7 @@ public class DataValidationAspect {
 
 	/** The validator. */
 	@Inject
-	LocalValidatorFactoryBean	validator					= null;
+	Validator	validator					= null;
 
 	/** The message resource bundle name. */
 	@Value("${messageResourceBundleName}")
@@ -135,7 +135,7 @@ public class DataValidationAspect {
 		try // to validate the parameter
 		{
 
-			Set<ConstraintViolation<Object>> constraints = this.validator.getValidator().validate(param);
+			Set<ConstraintViolation<Object>> constraints = this.validator.validate(param);
 
 			// get locale
 			final Locale locale = LocaleContextHolder.getLocale();

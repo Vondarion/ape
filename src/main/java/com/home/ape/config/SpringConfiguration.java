@@ -1,5 +1,7 @@
 package com.home.ape.config;
 
+import javax.validation.Validator;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -42,7 +44,7 @@ public class SpringConfiguration {
 	 * @return the local validator factory bean
 	 */
 	@Bean
-	public LocalValidatorFactoryBean validator() {
+	public Validator validator() {
 		LocalValidatorFactoryBean validatorBean = new LocalValidatorFactoryBean();
 		validatorBean.setValidationMessageSource(messageSource());
 		return validatorBean;
