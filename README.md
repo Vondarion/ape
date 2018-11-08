@@ -1,5 +1,4 @@
-
-This project...
+This project is a little ape that controls my Smart Home.
 
 ## Table of Contents
 
