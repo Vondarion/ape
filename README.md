@@ -1,4 +1,5 @@
 This project is a little ape that controls my Smart Home.
+Switched to be stored at bitbucket.
 
 ## Table of Contents
 
